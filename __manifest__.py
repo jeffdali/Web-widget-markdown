@@ -29,9 +29,9 @@ Features:
     # and Odoo 19 to adapt to "19.0.1.0.0" automatically.
     "version": "18.0.1.0.0",
     "category": "Technical",
-    "author": "Jeff Dali",
+    "author": "Jaafar Ali",
     "website": "https://github.com/jeffdali/Web-widget-markdown",
-    "support": "https://github.com/jeffdali/Web-widget-markdown/issues",
+    "support": "jaafar.ali.in@gmail.com",
     "license": "LGPL-3",
     "images": [
         "static/description/banner.png",

@@ -202,6 +202,7 @@ This project is licensed under the **GNU Lesser General Public License v3.0 (LGP
 
 ## 🤝 Author & Support
 
-- **Author**: Jeff Dali ([@jeffdali](https://github.com/jeffdali))
+- **Author**: Jaafar Ali
+- **Email**: [jaafar.ali.in@gmail.com](mailto:jaafar.ali.in@gmail.com)
 - **Repository**: [https://github.com/jeffdali/Web-widget-markdown](https://github.com/jeffdali/Web-widget-markdown)
 - **Issues & Contributions**: Bug reports, feature suggestions, and pull requests are warmly welcome!
