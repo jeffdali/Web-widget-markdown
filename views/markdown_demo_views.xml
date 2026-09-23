@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Part of Odoo. See LICENSE file for full copyright and licensing details. -->
 <odoo>
-    <!-- List View -->
+    <!-- Tree / List View -->
     <record id="view_web_markdown_test_list" model="ir.ui.view">
         <field name="name">web.markdown.test.list</field>
         <field name="model">web.markdown.test</field>
         <field name="arch" type="xml">
-            <list string="Markdown Tests">
+            <tree string="Markdown Tests">
                 <field name="name"/>
                 <field name="content" widget="markdown_preview"/>
-            </list>
+            </tree>
         </field>
     </record>
 
@@ -64,7 +64,7 @@
     <record id="action_web_markdown_test" model="ir.actions.act_window">
         <field name="name">Markdown Test</field>
         <field name="res_model">web.markdown.test</field>
-        <field name="view_mode">list,kanban,form</field>
+        <field name="view_mode">tree,kanban,form</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Create a new Markdown test record
