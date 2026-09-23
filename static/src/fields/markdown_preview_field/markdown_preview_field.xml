@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Part of Odoo. See LICENSE file for full copyright and licensing details. -->
+<templates xml:space="preserve">
+    <t t-name="web_widget_markdown.MarkdownPreviewField" owl="1">
+        <div class="o_field_markdown_preview_container d-inline-flex align-items-center justify-content-between gap-2 mw-100">
+            <div class="o_field_markdown_preview_wrapper text-truncate flex-grow-1" t-out="renderedPreview"/>
+            <button t-if="hasContent"
+                    type="button"
+                    class="btn btn-sm btn-outline-secondary flex-shrink-0 o_markdown_preview_btn py-0 px-2"
+                    title="Preview Markdown"
+                    aria-label="Preview Markdown"
+                    t-on-click.stop.prevent="openPreviewDialog">
+                <i class="fa fa-eye me-1"/>Preview
+            </button>
+        </div>
+    </t>
+</templates>

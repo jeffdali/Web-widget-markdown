@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Part of Odoo. See LICENSE file for full copyright and licensing details. -->
+<templates xml:space="preserve">
+    <t t-name="web_widget_markdown.MarkdownPreviewDialog" owl="1">
+        <Dialog title="props.title" size="'lg'" contentClass="'o_markdown_preview_dialog_modal'">
+            <div class="o_markdown_preview_dialog_body p-3">
+                <t t-if="props.content">
+                    <MarkdownViewer value="props.content"/>
+                </t>
+                <div t-else="" class="text-muted text-center py-4 fst-italic">
+                    No Markdown content to display.
+                </div>
+            </div>
+            <t t-set-slot="footer" t-slot-scope="dialog">
+                <button class="btn btn-secondary" t-on-click="dialog.close">
+                    Close
+                </button>
+            </t>
+        </Dialog>
+    </t>
+</templates>

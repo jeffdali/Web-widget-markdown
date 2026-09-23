@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Part of Odoo. See LICENSE file for full copyright and licensing details. -->
+<templates xml:space="preserve">
+    <t t-name="web_widget_markdown.MarkdownEditor" owl="1">
+        <div class="o_markdown_editor_wrapper w-100">
+            <t t-if="props.readonly">
+                <div class="o_field_markdown_viewer w-100" t-out="renderedMarkdown"/>
+            </t>
+            <t t-else="">
+                <div class="o_field_markdown_editor_container w-100">
+                    <textarea t-ref="textarea"/>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>

@@ -1,0 +1,725 @@
+/* Part of Odoo. See LICENSE file for full copyright and licensing details. */
+
+/* Ensure Markdown field and its widgets occupy 100% of container width */
+.o_field_widget.o_field_markdown,
+.o_field_markdown {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    flex: 1 1 100% !important;
+    box-sizing: border-box !important;
+}
+
+.o_markdown_field_container,
+.o_markdown_editor_wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+}
+
+.o_field_markdown_viewer {
+    font-family: inherit;
+    line-height: 1.6;
+    word-break: break-word;
+    color: var(--body-color, #1e293b);
+
+    h1, h2, h3, h4, h5, h6 {
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        color: #0f172a;
+    }
+
+    h1 { font-size: 1.75rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.3rem; }
+    h2 { font-size: 1.5rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.2rem; }
+    h3 { font-size: 1.25rem; }
+    h4 { font-size: 1.1rem; }
+    h5 { font-size: 1rem; }
+    h6 { font-size: 0.9rem; }
+
+    p {
+        margin-bottom: 0.75rem;
+        color: #334155;
+    }
+
+    code {
+        font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        font-size: 0.875em;
+        background-color: rgba(113, 75, 103, 0.08);
+        color: #be185d;
+        padding: 0.2rem 0.4rem;
+        border-radius: 4px;
+        border: 1px solid rgba(113, 75, 103, 0.15);
+    }
+
+    pre {
+        background-color: #1e1e2e !important;
+        border: 1px solid #313244 !important;
+        border-radius: 8px !important;
+        padding: 1rem 1.25rem !important;
+        overflow-x: auto !important;
+        margin-bottom: 1rem !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+        color: #cdd6f4 !important;
+
+        code,
+        code * {
+            padding: 0 !important;
+            background-color: transparent !important;
+            color: #cdd6f4 !important;
+            font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+            font-size: 0.9rem !important;
+            line-height: 1.6 !important;
+            border: none !important;
+            white-space: pre !important;
+        }
+
+        code {
+            display: block !important;
+        }
+    }
+
+    blockquote {
+        margin: 0 0 1rem 0;
+        padding: 0.5rem 1rem;
+        border-left: 4px solid #714B67;
+        background-color: rgba(113, 75, 103, 0.08);
+        color: #475569;
+    }
+
+    table {
+        width: 100%;
+        margin-bottom: 1rem;
+        border-collapse: collapse;
+        border: 1px solid #cbd5e1;
+
+        th, td {
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #cbd5e1;
+        }
+
+        th {
+            background-color: #f1f5f9;
+            font-weight: 600;
+            color: #0f172a;
+        }
+
+        td {
+            color: #334155;
+        }
+    }
+
+    ul, ol {
+        padding-left: 1.5rem;
+        margin-bottom: 0.75rem;
+        color: #334155;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 6px;
+    }
+
+    hr {
+        margin: 1.5rem 0;
+        border: 0;
+        border-top: 1px solid #e2e8f0;
+    }
+}
+
+/* Universal EasyMDE toolbar and button rules */
+.editor-toolbar {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 20 !important;
+    display: flex !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    gap: 4px !important;
+    background-color: #f8fafc !important;
+    border: 1px solid #cbd5e1 !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+    border-top-left-radius: 6px !important;
+    border-top-right-radius: 6px !important;
+    padding: 6px 8px !important;
+    user-select: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+
+    &.fullscreen {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 1050 !important;
+    }
+
+    /* Override all button styles and reset any Bootstrap .table collisions */
+    button,
+    button.table,
+    .table,
+    .easymde-dropdown {
+        all: unset !important;
+        box-sizing: border-box !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 32px !important;
+        min-width: 32px !important;
+        max-width: 32px !important;
+        height: 32px !important;
+        max-height: 32px !important;
+        padding: 0 !important;
+        margin: 1px !important;
+        float: none !important;
+        clear: none !important;
+        opacity: 1 !important;
+        background-color: #ffffff !important;
+        border: 1px solid #cbd5e1 !important;
+        border-radius: 6px !important;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+        color: #1e293b !important;
+        cursor: pointer !important;
+        transition: all 0.15s ease-in-out !important;
+
+        i {
+            display: inline-block !important;
+            color: #1e293b !important;
+            font-size: 15px !important;
+            line-height: 1 !important;
+            opacity: 1 !important;
+            font-style: normal !important;
+            text-align: center !important;
+        }
+
+        &:hover {
+            background-color: #f1f5f9 !important;
+            border-color: #94a3b8 !important;
+            color: #0f172a !important;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+            transform: translateY(-1px) !important;
+
+            i {
+                color: #0f172a !important;
+            }
+        }
+
+        &.active {
+            background-color: #714B67 !important;
+            border-color: #714B67 !important;
+            color: #ffffff !important;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15) !important;
+            transform: none !important;
+
+            i {
+                color: #ffffff !important;
+            }
+        }
+    }
+
+    i.separator {
+        display: inline-block !important;
+        width: 1px !important;
+        height: 20px !important;
+        margin: 0 4px !important;
+        border: none !important;
+        background-color: #cbd5e1 !important;
+        color: transparent !important;
+        text-indent: -9999px !important;
+        vertical-align: middle !important;
+        flex-shrink: 0 !important;
+    }
+}
+
+/* In standard form view sheet with padding-top, stick flush under control panel */
+.o_form_sheet_bg .editor-toolbar {
+    top: -24px !important;
+}
+
+/* When form has a sticky statusbar, offset sticky toolbar by statusbar height */
+.o_form_sheet_bg:has(.o_form_statusbar) .editor-toolbar {
+    top: 24px !important;
+}
+
+/* EasyMDE editor container and CodeMirror area */
+.o_field_markdown_editor_container {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+
+    .EasyMDEContainer {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+        border-radius: 6px;
+
+        .CodeMirror {
+            width: 100% !important;
+            max-width: 100% !important;
+            min-width: 0 !important;
+            box-sizing: border-box !important;
+            border: 1px solid #cbd5e1;
+            border-top: none;
+            border-bottom-left-radius: 6px;
+            border-bottom-right-radius: 6px;
+            font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            font-size: 0.925rem;
+            line-height: 1.5;
+            min-height: 260px;
+            background: #ffffff;
+            color: #1e293b;
+            padding: 12px;
+
+            .CodeMirror-selected {
+                background: rgba(113, 75, 103, 0.18) !important;
+            }
+
+            .CodeMirror-cursor {
+                border-left: 2px solid #714B67;
+            }
+
+            .CodeMirror-scroll {
+                box-sizing: border-box !important;
+                max-width: 100% !important;
+                min-width: 0 !important;
+            }
+        }
+
+        .editor-preview,
+        .editor-preview-side {
+            background: #ffffff;
+            color: #1e293b;
+            padding: 16px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+
+            h1, h2, h3, h4, h5, h6 {
+                color: #0f172a;
+                font-weight: 600;
+                margin-top: 1rem;
+                margin-bottom: 0.5rem;
+            }
+
+            p {
+                margin-bottom: 0.75rem;
+                color: #334155;
+            }
+
+            code {
+                padding: 0.2em 0.4em;
+                background-color: rgba(113, 75, 103, 0.08);
+                color: #be185d;
+                border-radius: 4px;
+                border: 1px solid rgba(113, 75, 103, 0.15);
+                font-size: 85%;
+                font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+            }
+
+            pre {
+                padding: 1rem 1.25rem !important;
+                background-color: #1e1e2e !important;
+                border: 1px solid #313244 !important;
+                border-radius: 8px !important;
+                overflow-x: auto !important;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+                color: #cdd6f4 !important;
+
+                code,
+                code * {
+                    padding: 0 !important;
+                    background-color: transparent !important;
+                    color: #cdd6f4 !important;
+                    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+                    font-size: 0.9rem !important;
+                    line-height: 1.6 !important;
+                    border: none !important;
+                    white-space: pre !important;
+                }
+
+                code {
+                    display: block !important;
+                }
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-bottom: 1rem;
+
+                th, td {
+                    padding: 6px 12px;
+                    border: 1px solid #e2e8f0;
+                }
+
+                th {
+                    background-color: #f8fafc;
+                    font-weight: 600;
+                    color: #0f172a;
+                }
+
+                td {
+                    color: #334155;
+                }
+            }
+
+            blockquote {
+                padding: 0 1em;
+                color: #64748b;
+                border-left: 0.25em solid #cbd5e1;
+                margin: 0 0 1rem 0;
+            }
+        }
+    }
+}
+
+/* Compact preview in list/kanban */
+.o_field_markdown_preview_container {
+    width: 100%;
+}
+
+.o_field_markdown_preview_wrapper {
+    display: inline-block;
+    max-width: 100%;
+    vertical-align: middle;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    p {
+        display: inline;
+        margin: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        display: inline;
+        font-size: inherit;
+        font-weight: 600;
+        margin: 0;
+    }
+}
+
+.o_markdown_preview_btn {
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1.5;
+    padding: 1px 6px;
+    border-radius: 4px;
+    border: 1px solid #cbd5e1;
+    background-color: #ffffff;
+    color: #475569;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    transition: all 0.15s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #f1f5f9;
+        border-color: #94a3b8;
+        color: #1e293b;
+    }
+}
+
+.o_markdown_preview_dialog_modal {
+    background-color: #ffffff;
+    color: #1e293b;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    overflow: hidden;
+
+    .modal-header {
+        background-color: #ffffff;
+        border-bottom: 1px solid #e2e8f0;
+        color: #0f172a;
+
+        .modal-title {
+            color: #0f172a;
+            font-weight: 600;
+        }
+    }
+
+    .modal-body {
+        background-color: #ffffff;
+        padding: 0;
+    }
+
+    .o_markdown_preview_dialog_body {
+        max-height: 70vh;
+        overflow-y: auto;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        background-color: #ffffff;
+        color: #1e293b;
+    }
+
+    .modal-footer {
+        background-color: #f8fafc;
+        border-top: 1px solid #e2e8f0;
+    }
+}
+
+/* Dark mode styling mixin */
+@mixin markdown-widget-dark-theme {
+    .o_field_markdown_viewer {
+        color: #f1f5f9 !important;
+
+        h1, h2, h3, h4, h5, h6 {
+            color: #ffffff !important;
+            border-color: #334155 !important;
+        }
+
+        p, li, span {
+            color: #cbd5e1 !important;
+        }
+
+        code:not(pre code) {
+            background-color: rgba(255, 255, 255, 0.1) !important;
+            color: #f472b6 !important;
+            border-color: rgba(255, 255, 255, 0.15) !important;
+        }
+
+        pre {
+            background-color: #11111b !important;
+            border: 1px solid #313244 !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+            color: #cdd6f4 !important;
+
+            code,
+            code * {
+                padding: 0 !important;
+                background-color: transparent !important;
+                color: #cdd6f4 !important;
+                border: none !important;
+                font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+                font-size: 0.9rem !important;
+                line-height: 1.6 !important;
+                white-space: pre !important;
+            }
+
+            code {
+                display: block !important;
+            }
+        }
+
+        table {
+            border-color: #334155 !important;
+
+            th, td {
+                border-color: #334155 !important;
+            }
+
+            th {
+                background-color: #1e293b !important;
+                color: #ffffff !important;
+            }
+
+            td {
+                color: #cbd5e1 !important;
+            }
+        }
+
+        blockquote {
+            background-color: rgba(113, 75, 103, 0.15) !important;
+            border-left-color: #a06e92 !important;
+            color: #94a3b8 !important;
+        }
+
+        hr {
+            border-top-color: #334155 !important;
+        }
+    }
+
+    .editor-toolbar {
+        background-color: #1e1e2d !important;
+        border-color: #323248 !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+
+        button,
+        button.table,
+        .table,
+        .easymde-dropdown {
+            background-color: #27273a !important;
+            border-color: #3f3f58 !important;
+            color: #f1f5f9 !important;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25) !important;
+
+            i {
+                color: #f1f5f9 !important;
+            }
+
+            &:hover {
+                background-color: #363650 !important;
+                border-color: #6366f1 !important;
+                color: #ffffff !important;
+
+                i {
+                    color: #ffffff !important;
+                }
+            }
+
+            &.active {
+                background-color: #714B67 !important;
+                border-color: #714B67 !important;
+                color: #ffffff !important;
+
+                i {
+                    color: #ffffff !important;
+                }
+            }
+        }
+
+        i.separator {
+            background-color: #3f3f58 !important;
+        }
+    }
+
+    .o_field_markdown_editor_container .EasyMDEContainer {
+        .CodeMirror {
+            background: #181824 !important;
+            color: #f1f5f9 !important;
+            border-color: #323248 !important;
+
+            .CodeMirror-selected {
+                background: rgba(160, 110, 146, 0.3) !important;
+            }
+
+            .CodeMirror-cursor {
+                border-left: 2px solid #a06e92 !important;
+            }
+        }
+
+        .editor-preview,
+        .editor-preview-side {
+            background: #181824 !important;
+            color: #f1f5f9 !important;
+            border-color: #323248 !important;
+
+            h1, h2, h3, h4, h5, h6 {
+                color: #ffffff !important;
+            }
+
+            p, li {
+                color: #cbd5e1 !important;
+            }
+
+            code:not(pre code) {
+                background-color: rgba(255, 255, 255, 0.1) !important;
+                color: #f472b6 !important;
+                border-color: rgba(255, 255, 255, 0.15) !important;
+            }
+
+            pre {
+                background-color: #11111b !important;
+                border: 1px solid #313244 !important;
+                color: #cdd6f4 !important;
+
+                code,
+                code * {
+                    padding: 0 !important;
+                    background-color: transparent !important;
+                    color: #cdd6f4 !important;
+                    border: none !important;
+                    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+                    font-size: 0.9rem !important;
+                    line-height: 1.6 !important;
+                    white-space: pre !important;
+                }
+
+                code {
+                    display: block !important;
+                }
+            }
+
+            table {
+                border-color: rgba(255, 255, 255, 0.15) !important;
+
+                th, td {
+                    border-color: rgba(255, 255, 255, 0.15) !important;
+                }
+
+                th {
+                    background-color: rgba(255, 255, 255, 0.05) !important;
+                    color: #ffffff !important;
+                }
+
+                td {
+                    color: #cbd5e1 !important;
+                }
+            }
+
+            blockquote {
+                color: #94a3b8 !important;
+                border-left-color: #475569 !important;
+            }
+        }
+    }
+
+    .o_markdown_preview_btn {
+        background-color: #27273a !important;
+        border-color: #3f3f58 !important;
+        color: #e2e8f0 !important;
+
+        &:hover {
+            background-color: #363650 !important;
+            border-color: #6366f1 !important;
+            color: #ffffff !important;
+        }
+    }
+
+    .o_markdown_preview_dialog_modal {
+        background-color: #181824 !important;
+        color: #f1f5f9 !important;
+        border: 1px solid #323248 !important;
+        border-radius: 8px !important;
+        overflow: hidden !important;
+
+        .modal-header {
+            background-color: #1e1e2d !important;
+            border-bottom: 1px solid #323248 !important;
+            color: #ffffff !important;
+
+            .modal-title {
+                color: #ffffff !important;
+                font-weight: 600 !important;
+            }
+
+            .btn-close {
+                filter: invert(1) grayscale(100%) brightness(200%) !important;
+            }
+        }
+
+        .modal-body {
+            background-color: #181824 !important;
+            padding: 0 !important;
+        }
+
+        .o_markdown_preview_dialog_body {
+            background-color: #181824 !important;
+            color: #f1f5f9 !important;
+        }
+
+        .modal-footer {
+            background-color: #1e1e2d !important;
+            border-top: 1px solid #323248 !important;
+        }
+    }
+}
+
+[data-color-mode="dark"],
+[data-bs-theme="dark"],
+body.o_dark_mode,
+.o_web_client.o_dark_mode {
+    @include markdown-widget-dark-theme;
+}
+
+@media (prefers-color-scheme: dark) {
+    @include markdown-widget-dark-theme;
+}

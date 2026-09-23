@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Part of Odoo. See LICENSE file for full copyright and licensing details. -->
+<odoo>
+    <!-- List View -->
+    <record id="view_web_markdown_test_list" model="ir.ui.view">
+        <field name="name">web.markdown.test.list</field>
+        <field name="model">web.markdown.test</field>
+        <field name="arch" type="xml">
+            <list string="Markdown Tests">
+                <field name="name"/>
+                <field name="content" widget="markdown_preview"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Kanban View -->
+    <record id="view_web_markdown_test_kanban" model="ir.ui.view">
+        <field name="name">web.markdown.test.kanban</field>
+        <field name="model">web.markdown.test</field>
+        <field name="arch" type="xml">
+            <kanban sample="1">
+                <field name="name"/>
+                <field name="content"/>
+                <templates>
+                    <t t-name="card">
+                        <div class="d-flex flex-column gap-2 p-2">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <strong class="fs-5 text-primary"><field name="name"/></strong>
+                            </div>
+                            <div class="text-muted small">
+                                <field name="content" widget="markdown_preview"/>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_web_markdown_test_form" model="ir.ui.view">
+        <field name="name">web.markdown.test.form</field>
+        <field name="model">web.markdown.test</field>
+        <field name="arch" type="xml">
+            <form string="Markdown Test Record">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" string="Title"/>
+                        <h1>
+                            <field name="name" placeholder="Title..."/>
+                        </h1>
+                    </div>
+                    <notebook>
+                        <page string="Markdown Editor" name="markdown_page">
+                            <field name="content" widget="markdown" nolabel="1" placeholder="Write markdown content here..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Window Action -->
+    <record id="action_web_markdown_test" model="ir.actions.act_window">
+        <field name="name">Markdown Test</field>
+        <field name="res_model">web.markdown.test</field>
+        <field name="view_mode">list,kanban,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Markdown test record
+            </p>
+            <p>
+                Test Markdown editing in form edit mode and safe rendered preview in list and read-only views.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menus: Settings > Technical > Markdown > Markdown Test -->
+    <menuitem id="menu_markdown_technical_root"
+              name="Markdown"
+              parent="base.menu_custom"
+              sequence="90"/>
+
+    <menuitem id="menu_markdown_technical_test"
+              name="Markdown Test"
+              parent="menu_markdown_technical_root"
+              action="action_web_markdown_test"
+              sequence="10"/>
+</odoo>
