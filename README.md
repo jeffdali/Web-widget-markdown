@@ -123,8 +123,6 @@ In list/tree views, use `widget="markdown_preview"` to render a clean, single-li
 </list>
 ```
 
-*(For Odoo 18, use `<tree>` instead of `<list>`)*.
-
 ### 3. Adding to Kanban Cards
 
 ```xml
