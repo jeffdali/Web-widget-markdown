@@ -1,6 +1,6 @@
 /* Part of Odoo. See LICENSE file for full copyright and licensing details. */
 
-/* Ensure Markdown field and its widgets occupy 100% of container width */
+/* Ensure Markdown field and its widgets occupy 100% of container width and stay LTR */
 .o_field_widget.o_field_markdown,
 .o_field_markdown {
     display: block !important;
@@ -9,6 +9,8 @@
     min-width: 0 !important;
     flex: 1 1 100% !important;
     box-sizing: border-box !important;
+    direction: ltr !important;
+    text-align: left !important;
 }
 
 .o_markdown_field_container,
@@ -19,45 +21,76 @@
     max-width: 100% !important;
     min-width: 0 !important;
     box-sizing: border-box !important;
+    direction: ltr !important;
+    text-align: left !important;
 }
 
 .o_field_markdown_viewer {
     font-family: inherit;
-    line-height: 1.6;
+    line-height: 1.65;
     word-break: break-word;
-    color: var(--body-color, #1e293b);
+    color: #1e293b;
+    direction: ltr !important;
+    text-align: left !important;
 
     h1, h2, h3, h4, h5, h6 {
-        margin-top: 1rem;
-        margin-bottom: 0.5rem;
-        font-weight: 600;
-        color: #0f172a;
+        margin-top: 1.25rem;
+        margin-bottom: 0.6rem;
+        font-weight: 700;
+        color: #0f172a !important;
     }
 
-    h1 { font-size: 1.75rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.3rem; }
-    h2 { font-size: 1.5rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.2rem; }
+    h1 { font-size: 1.75rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.4rem; }
+    h2 { font-size: 1.45rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.3rem; }
     h3 { font-size: 1.25rem; }
     h4 { font-size: 1.1rem; }
     h5 { font-size: 1rem; }
     h6 { font-size: 0.9rem; }
 
     p {
-        margin-bottom: 0.75rem;
-        color: #334155;
+        margin-bottom: 0.85rem;
+        color: #1e293b !important;
     }
 
-    code {
+    strong, b {
+        color: #0f172a !important;
+        font-weight: 700;
+    }
+
+    em, i {
+        color: #334155 !important;
+    }
+
+    a {
+        color: #4f46e5 !important;
+        text-decoration: underline;
+        font-weight: 500;
+    }
+
+    ul, ol {
+        padding-left: 1.5rem;
+        margin-bottom: 0.85rem;
+        color: #1e293b !important;
+
+        li {
+            color: #1e293b !important;
+            margin-bottom: 0.3rem;
+        }
+    }
+
+    code:not(pre code) {
         font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
         font-size: 0.875em;
-        background-color: rgba(113, 75, 103, 0.08);
-        color: #be185d;
-        padding: 0.2rem 0.4rem;
+        background-color: rgba(113, 75, 103, 0.08) !important;
+        color: #be185d !important;
+        padding: 0.2rem 0.45rem;
         border-radius: 4px;
-        border: 1px solid rgba(113, 75, 103, 0.15);
+        border: 1px solid rgba(113, 75, 103, 0.2) !important;
+        font-weight: 600;
     }
 
     pre {
-        background-color: #1e1e2e !important;
+        background-color: #181825 !important;
         border: 1px solid #313244 !important;
         border-radius: 8px !important;
         padding: 1rem 1.25rem !important;
@@ -85,38 +118,41 @@
 
     blockquote {
         margin: 0 0 1rem 0;
-        padding: 0.5rem 1rem;
-        border-left: 4px solid #714B67;
-        background-color: rgba(113, 75, 103, 0.08);
-        color: #475569;
+        padding: 0.6rem 1rem;
+        border-left: 4px solid #714B67 !important;
+        background-color: rgba(113, 75, 103, 0.06) !important;
+        color: #334155 !important;
+        border-radius: 0 6px 6px 0;
     }
 
     table {
         width: 100%;
         margin-bottom: 1rem;
         border-collapse: collapse;
-        border: 1px solid #cbd5e1;
+        border: 1px solid #cbd5e1 !important;
+        border-radius: 6px;
+        overflow: hidden;
 
         th, td {
-            padding: 0.5rem 0.75rem;
-            border: 1px solid #cbd5e1;
+            padding: 0.6rem 0.9rem;
+            border: 1px solid #cbd5e1 !important;
         }
 
         th {
-            background-color: #f1f5f9;
-            font-weight: 600;
-            color: #0f172a;
+            background-color: #f1f5f9 !important;
+            font-weight: 700;
+            color: #0f172a !important;
+            border-bottom: 2px solid #cbd5e1 !important;
         }
 
         td {
-            color: #334155;
+            color: #1e293b !important;
+            background-color: #ffffff !important;
         }
-    }
 
-    ul, ol {
-        padding-left: 1.5rem;
-        margin-bottom: 0.75rem;
-        color: #334155;
+        tr:nth-child(even) td {
+            background-color: #f8fafc !important;
+        }
     }
 
     img {
@@ -134,6 +170,8 @@
 
 /* Universal EasyMDE toolbar and button rules */
 .editor-toolbar {
+    direction: ltr !important;
+    text-align: left !important;
     position: sticky !important;
     top: 0 !important;
     z-index: 20 !important;
@@ -150,14 +188,21 @@
     border-top-right-radius: 6px !important;
     padding: 6px 8px !important;
     user-select: none;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
 
     &.fullscreen {
         position: fixed !important;
         top: 0 !important;
         left: 0 !important;
         right: 0 !important;
-        z-index: 1050 !important;
+        width: 100vw !important;
+        height: 48px !important;
+        z-index: 100000 !important;
+        border-radius: 0 !important;
+        background-color: #f8fafc !important;
+        border: none !important;
+        border-bottom: 1px solid #cbd5e1 !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
     }
 
     /* Override all button styles and reset any Bootstrap .table collisions */
@@ -237,16 +282,6 @@
     }
 }
 
-/* In standard form view sheet with padding-top, stick flush under control panel */
-.o_form_sheet_bg .editor-toolbar {
-    top: -24px !important;
-}
-
-/* When form has a sticky statusbar, offset sticky toolbar by statusbar height */
-.o_form_sheet_bg:has(.o_form_statusbar) .editor-toolbar {
-    top: 24px !important;
-}
-
 /* EasyMDE editor container and CodeMirror area */
 .o_field_markdown_editor_container {
     display: block !important;
@@ -254,14 +289,19 @@
     max-width: 100% !important;
     min-width: 0 !important;
     box-sizing: border-box !important;
+    direction: ltr !important;
+    text-align: left !important;
 
     .EasyMDEContainer {
         display: block !important;
+        position: relative !important;
         width: 100% !important;
         max-width: 100% !important;
         min-width: 0 !important;
         box-sizing: border-box !important;
         border-radius: 6px;
+        direction: ltr !important;
+        text-align: left !important;
 
         .CodeMirror {
             width: 100% !important;
@@ -279,6 +319,51 @@
             background: #ffffff;
             color: #1e293b;
             padding: 12px;
+            direction: ltr !important;
+            text-align: left !important;
+
+            .CodeMirror-scroll,
+            .CodeMirror-sizer,
+            .CodeMirror-lines,
+            .CodeMirror-code,
+            pre.CodeMirror-line,
+            pre.CodeMirror-line-like {
+                direction: ltr !important;
+                text-align: left !important;
+                unicode-bidi: isolate !important;
+            }
+
+            pre,
+            pre.CodeMirror-line,
+            pre.CodeMirror-line-like {
+                background: transparent !important;
+                background-color: transparent !important;
+                border: none !important;
+                border-radius: 0 !important;
+                padding: 0 4px !important;
+                margin: 0 !important;
+                box-shadow: none !important;
+                color: inherit !important;
+                font-family: inherit !important;
+                font-size: inherit !important;
+                line-height: inherit !important;
+                white-space: pre-wrap !important;
+                overflow: visible !important;
+            }
+
+            .cm-formatting-code-block,
+            .cm-comment {
+                color: #2563eb !important;
+            }
+            .cm-keyword {
+                color: #7c3aed !important;
+            }
+            .cm-string {
+                color: #16a34a !important;
+            }
+            .cm-number {
+                color: #d97706 !important;
+            }
 
             .CodeMirror-selected {
                 background: rgba(113, 75, 103, 0.18) !important;
@@ -289,50 +374,91 @@
             }
 
             .CodeMirror-scroll {
-                box-sizing: border-box !important;
                 max-width: 100% !important;
                 min-width: 0 !important;
+                scroll-behavior: smooth;
             }
         }
 
         .editor-preview,
-        .editor-preview-side {
+        .editor-preview-side,
+        .editor-preview-full {
             background: #ffffff;
             color: #1e293b;
-            padding: 16px;
+            padding: 18px 24px;
             font-size: 0.95rem;
-            line-height: 1.6;
+            line-height: 1.65;
+            direction: ltr !important;
+            text-align: left !important;
+            box-sizing: border-box !important;
+            overflow-y: auto !important;
+            scroll-behavior: smooth;
 
             h1, h2, h3, h4, h5, h6 {
-                color: #0f172a;
-                font-weight: 600;
-                margin-top: 1rem;
-                margin-bottom: 0.5rem;
+                color: #0f172a !important;
+                font-weight: 700;
+                margin-top: 1.25rem;
+                margin-bottom: 0.6rem;
             }
+
+            h1 { font-size: 1.75rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.4rem; }
+            h2 { font-size: 1.45rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.3rem; }
+            h3 { font-size: 1.25rem; }
+            h4 { font-size: 1.1rem; }
+            h5 { font-size: 1rem; }
+            h6 { font-size: 0.9rem; }
 
             p {
-                margin-bottom: 0.75rem;
-                color: #334155;
+                margin-bottom: 0.85rem;
+                color: #1e293b !important;
             }
 
-            code {
-                padding: 0.2em 0.4em;
-                background-color: rgba(113, 75, 103, 0.08);
-                color: #be185d;
+            strong, b {
+                color: #0f172a !important;
+                font-weight: 700;
+            }
+
+            em, i {
+                color: #334155 !important;
+            }
+
+            a {
+                color: #4f46e5 !important;
+                text-decoration: underline;
+                font-weight: 500;
+            }
+
+            ul, ol {
+                padding-left: 1.5rem;
+                margin-bottom: 0.85rem;
+                color: #1e293b !important;
+
+                li {
+                    color: #1e293b !important;
+                    margin-bottom: 0.3rem;
+                }
+            }
+
+            code:not(pre code) {
+                padding: 0.2em 0.45em;
+                background-color: rgba(113, 75, 103, 0.08) !important;
+                color: #be185d !important;
                 border-radius: 4px;
-                border: 1px solid rgba(113, 75, 103, 0.15);
+                border: 1px solid rgba(113, 75, 103, 0.2) !important;
                 font-size: 85%;
                 font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+                font-weight: 600;
             }
 
             pre {
                 padding: 1rem 1.25rem !important;
-                background-color: #1e1e2e !important;
+                background-color: #181825 !important;
                 border: 1px solid #313244 !important;
                 border-radius: 8px !important;
                 overflow-x: auto !important;
                 box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
                 color: #cdd6f4 !important;
+                margin-bottom: 1rem !important;
 
                 code,
                 code * {
@@ -355,49 +481,198 @@
                 width: 100%;
                 border-collapse: collapse;
                 margin-bottom: 1rem;
+                border: 1px solid #cbd5e1 !important;
+                border-radius: 6px;
+                overflow: hidden;
 
                 th, td {
-                    padding: 6px 12px;
-                    border: 1px solid #e2e8f0;
+                    padding: 0.6rem 0.9rem;
+                    border: 1px solid #cbd5e1 !important;
                 }
 
                 th {
-                    background-color: #f8fafc;
-                    font-weight: 600;
-                    color: #0f172a;
+                    background-color: #f1f5f9 !important;
+                    font-weight: 700;
+                    color: #0f172a !important;
+                    border-bottom: 2px solid #cbd5e1 !important;
                 }
 
                 td {
-                    color: #334155;
+                    color: #1e293b !important;
+                    background-color: #ffffff !important;
+                }
+
+                tr:nth-child(even) td {
+                    background-color: #f8fafc !important;
                 }
             }
 
             blockquote {
-                padding: 0 1em;
-                color: #64748b;
-                border-left: 0.25em solid #cbd5e1;
+                padding: 0.6rem 1rem;
+                color: #334155 !important;
+                border-left: 4px solid #714B67 !important;
+                background-color: rgba(113, 75, 103, 0.06) !important;
                 margin: 0 0 1rem 0;
+                border-radius: 0 6px 6px 0;
             }
+        }
+
+        /* Inactive preview MUST be hidden so it never covers the raw editor */
+        .editor-preview:not(.editor-preview-active) {
+            display: none !important;
+        }
+
+        /* When single full preview (eye icon) is active, hide CodeMirror scroll */
+        .CodeMirror:has(.editor-preview-active) .CodeMirror-scroll {
+            visibility: hidden !important;
+            opacity: 0 !important;
+        }
+
+        /* Full Preview (Eye Button) covers inner CodeMirror area */
+        .editor-preview.editor-preview-active,
+        .editor-preview-full.editor-preview-active {
+            display: block !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            z-index: 10 !important;
+            background-color: #ffffff !important;
+            border-bottom-left-radius: 6px !important;
+            border-bottom-right-radius: 6px !important;
+        }
+
+        /* Side-by-Side Mode: Left half is editor, Right half is live preview */
+        .CodeMirror.CodeMirror-sided {
+            width: 50% !important;
+            float: left !important;
+            border-right: 1px solid #cbd5e1 !important;
+            border-bottom-right-radius: 0 !important;
+
+            /* Raw editor scroll MUST be visible and interactive during side-by-side! */
+            .CodeMirror-scroll {
+                visibility: visible !important;
+                opacity: 1 !important;
+                display: block !important;
+            }
+
+            /* Single full preview must never appear inside sided editor */
+            .editor-preview {
+                display: none !important;
+            }
+        }
+
+        /* Side preview element on the right */
+        .editor-preview-side {
+            display: none !important;
+        }
+
+        .editor-preview-side.editor-preview-active-side {
+            display: block !important;
+            position: absolute !important;
+            top: 44px !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            width: 50% !important;
+            height: calc(100% - 44px) !important;
+            min-height: 260px !important;
+            z-index: 15 !important;
+            border: 1px solid #cbd5e1 !important;
+            border-top: none !important;
+            border-left: 1px solid #cbd5e1 !important;
+            border-bottom-right-radius: 6px !important;
+            background-color: #ffffff !important;
+            overflow-y: auto !important;
+            box-sizing: border-box !important;
+        }
+
+        /* Fullscreen Overlay Isolation */
+        .CodeMirror.CodeMirror-fullscreen {
+            position: fixed !important;
+            top: 48px !important;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            width: 100vw !important;
+            height: calc(100vh - 48px) !important;
+            z-index: 99990 !important;
+            background-color: #ffffff !important;
+            border: none !important;
+            border-radius: 0 !important;
+        }
+
+        .CodeMirror.CodeMirror-sided.CodeMirror-fullscreen {
+            width: 50vw !important;
+            right: 50vw !important;
+            border-right: 1px solid #cbd5e1 !important;
+        }
+
+        .CodeMirror-fullscreen .editor-preview.editor-preview-active,
+        .CodeMirror-fullscreen .editor-preview-full.editor-preview-active {
+            position: fixed !important;
+            top: 48px !important;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            width: 100vw !important;
+            height: calc(100vh - 48px) !important;
+            z-index: 99995 !important;
+            border-radius: 0 !important;
+            border: none !important;
+        }
+
+        .editor-preview-side.editor-preview-active-side.editor-preview-fullscreen,
+        .CodeMirror-fullscreen ~ .editor-preview-side.editor-preview-active-side,
+        .CodeMirror-fullscreen .editor-preview-side,
+        .CodeMirror-fullscreen .editor-preview-active-side {
+            display: block !important;
+            position: fixed !important;
+            top: 48px !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            width: 50vw !important;
+            height: calc(100vh - 48px) !important;
+            z-index: 99995 !important;
+            border-radius: 0 !important;
+            border: none !important;
+            border-left: 1px solid #cbd5e1 !important;
+            background-color: #ffffff !important;
         }
     }
 }
 
+
 /* Compact preview in list/kanban */
 .o_field_markdown_preview_container {
-    width: 100%;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
 }
 
 .o_field_markdown_preview_wrapper {
-    display: inline-block;
+    display: block;
+    flex: 1 1 auto;
+    min-width: 0;
     max-width: 100%;
     vertical-align: middle;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: inherit;
+    font-size: 0.875rem;
+    line-height: 1.5;
 
-    p {
+    p, div {
         display: inline;
         margin: 0;
+        padding: 0;
     }
 
     h1, h2, h3, h4, h5, h6 {
@@ -405,14 +680,76 @@
         font-size: inherit;
         font-weight: 600;
         margin: 0;
+        padding: 0;
+        border: none;
     }
+
+    ul, ol {
+        display: inline;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    li {
+        display: inline;
+        margin-right: 6px;
+        &::before {
+            content: "• ";
+        }
+    }
+
+    code {
+        font-size: 85%;
+        padding: 1px 4px;
+        background: rgba(113, 75, 103, 0.08);
+        border-radius: 3px;
+    }
+
+    pre {
+        display: inline !important;
+        background: transparent !important;
+        border: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        box-shadow: none !important;
+
+        code {
+            display: inline !important;
+            padding: 1px 4px !important;
+            background: rgba(113, 75, 103, 0.08) !important;
+            border-radius: 3px !important;
+            color: inherit !important;
+        }
+    }
+
+    table {
+        display: none !important;
+    }
+}
+
+/* Multi-line clamp in Kanban cards */
+.o_kanban_record .o_field_markdown_preview_container {
+    display: flex !important;
+    align-items: flex-start !important;
+    margin-top: 4px;
+}
+
+.o_kanban_record .o_field_markdown_preview_wrapper {
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    white-space: normal !important;
+    overflow: hidden !important;
+    line-height: 1.4;
+    font-size: 0.85rem;
 }
 
 .o_markdown_preview_btn {
     font-size: 0.75rem;
     font-weight: 500;
     line-height: 1.5;
-    padding: 1px 6px;
+    padding: 2px 8px;
     border-radius: 4px;
     border: 1px solid #cbd5e1;
     background-color: #ffffff;
@@ -420,6 +757,7 @@
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
     transition: all 0.15s ease-in-out;
     cursor: pointer;
+    flex-shrink: 0;
 
     &:hover {
         background-color: #f1f5f9;
@@ -427,6 +765,7 @@
         color: #1e293b;
     }
 }
+
 
 .o_markdown_preview_dialog_modal {
     background-color: #ffffff;
@@ -587,6 +926,38 @@
             color: #f1f5f9 !important;
             border-color: #323248 !important;
 
+            pre,
+            pre.CodeMirror-line,
+            pre.CodeMirror-line-like {
+                background: transparent !important;
+                background-color: transparent !important;
+                border: none !important;
+                border-radius: 0 !important;
+                padding: 0 4px !important;
+                margin: 0 !important;
+                box-shadow: none !important;
+                color: #f1f5f9 !important;
+                font-family: inherit !important;
+                font-size: inherit !important;
+                line-height: inherit !important;
+                white-space: pre-wrap !important;
+                overflow: visible !important;
+            }
+
+            .cm-formatting-code-block,
+            .cm-comment {
+                color: #89b4fa !important;
+            }
+            .cm-keyword {
+                color: #cba6f7 !important;
+            }
+            .cm-string {
+                color: #a6e3a1 !important;
+            }
+            .cm-number {
+                color: #fab387 !important;
+            }
+
             .CodeMirror-selected {
                 background: rgba(160, 110, 146, 0.3) !important;
             }
@@ -660,7 +1031,30 @@
                 border-left-color: #475569 !important;
             }
         }
+
+        .CodeMirror.CodeMirror-fullscreen {
+            background-color: #181824 !important;
+        }
+
+        .CodeMirror-sided.CodeMirror-fullscreen {
+            border-right-color: #323248 !important;
+        }
+
+        .editor-preview-full {
+            background-color: #181824 !important;
+        }
+
+        .editor-preview-side,
+        .editor-preview-active-side,
+        .editor-preview-side.editor-preview-active-side,
+        .CodeMirror-fullscreen ~ .editor-preview-side.editor-preview-active-side {
+            background-color: #181824 !important;
+            border-color: #323248 !important;
+            border-left-color: #323248 !important;
+            color: #f1f5f9 !important;
+        }
     }
+
 
     .o_markdown_preview_btn {
         background-color: #27273a !important;
@@ -717,9 +1111,5 @@
 [data-bs-theme="dark"],
 body.o_dark_mode,
 .o_web_client.o_dark_mode {
-    @include markdown-widget-dark-theme;
-}
-
-@media (prefers-color-scheme: dark) {
     @include markdown-widget-dark-theme;
 }

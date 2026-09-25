@@ -2,6 +2,7 @@
 /* Part of Odoo. See LICENSE file for full copyright and licensing details. */
 
 import { Component, markup } from "@odoo/owl";
+import { cleanMarkdown } from "../../utils/markdown_utils";
 
 export class MarkdownViewer extends Component {
     static template = "web_widget_markdown.MarkdownViewer";
@@ -11,7 +12,7 @@ export class MarkdownViewer extends Component {
     };
 
     get renderedMarkdown() {
-        let raw = this.props.value || "";
+        let raw = cleanMarkdown(this.props.value || "");
         if (this.props.maxLength && raw.length > this.props.maxLength) {
             raw = raw.slice(0, this.props.maxLength) + "…";
         }

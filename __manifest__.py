@@ -50,6 +50,7 @@ Features:
             "web_widget_markdown/static/lib/easymde/easymde.min.js",
             "web_widget_markdown/static/lib/marked/marked.min.js",
             "web_widget_markdown/static/src/scss/markdown_widget.scss",
+            "web_widget_markdown/static/src/utils/**/*.js",
             "web_widget_markdown/static/src/components/**/*.js",
             "web_widget_markdown/static/src/components/**/*.xml",
             "web_widget_markdown/static/src/fields/**/*.js",

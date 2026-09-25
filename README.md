@@ -36,34 +36,46 @@ A modern, production-grade Markdown editing and viewing suite built with **OWL 2
 ## 📸 Screenshots & Showcase
 
 ### 1. Form View Editor with Sticky Formatting Toolbar
-The control toolbar stays pinned when scrolling through lengthy documents:
+The interactive EasyMDE toolbar features bold, italics, headings, quotes, numbered/bulleted lists, links, images, tables, and code blocks. The toolbar remains pinned at the top on scroll:
 
-```
-+-----------------------------------------------------------------------------------+
-|  [B]  [I]  [H]  |  [“]  [•]  [1.]  |  [🔗]  [🖼️]  [⊞]  [</>]  |  [👁️]  [◫]  [⛶]  [?]  |  <- Sticky Toolbar
-+-----------------------------------------------------------------------------------+
-|  # Project Specifications                                                         |
-|                                                                                   |
-|  - Requirement 1: Fast loading                                                    |
-|  - Requirement 2: Clean documentation                                             |
-|                                                                                   |
-|  ```python                                                                        |
-|  def compute_total(self):                                                         |
-|      return sum(self.lines.mapped('amount'))                                      |
-|  ```                                                                              |
-+-----------------------------------------------------------------------------------+
-```
+<p align="center">
+  <img src="static/description/editor_view.png" alt="Form View Markdown Editor" width="100%" style="border-radius: 8px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);" />
+</p>
 
-### 2. List / Kanban Preview with Modal Dialog
-Clicking the **Preview** button opens an interactive modal showing the full rendered Markdown with syntax highlighting:
+### 2. High-Contrast Rendered Typography & Tables
+Rich typography, clean markdown tables, and syntax-highlighted dark code blocks:
 
-```
-+-----------------------------------------------------------------------------------+
-| Title              | Content Preview                                              |
-+--------------------+--------------------------------------------------------------+
-| Server Setup Guide | Quick overview of deployment instructions...  [Preview]      |
-+--------------------+--------------------------------------------------------------+
-```
+<p align="center">
+  <img src="static/description/preview_mode.png" alt="Rendered Markdown Preview Mode" width="100%" style="border-radius: 8px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);" />
+</p>
+
+### 3. Real-Time Side-by-Side Split Screen Mode
+Simultaneous live editing on the left and instantaneous rendered preview on the right (toggle with the toolbar button or `F9`):
+
+<p align="center">
+  <img src="static/description/split_screen.png" alt="Side-by-Side Live Preview" width="100%" style="border-radius: 8px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);" />
+</p>
+
+### 4. List View Snippet & Preview Trigger
+In list/tree views, `widget="markdown_preview"` renders a clean, single-line truncated preview alongside a dedicated **Preview** button:
+
+<p align="center">
+  <img src="static/description/list_view.png" alt="List View Preview Snippet" width="100%" style="border-radius: 8px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);" />
+</p>
+
+### 5. Interactive Modal Dialog Popup
+Clicking the **Preview** button in List or Kanban view opens the full formatted document in a responsive modal dialog without leaving the current view:
+
+<p align="center">
+  <img src="static/description/modal_preview.png" alt="Interactive Modal Dialog Preview" width="100%" style="border-radius: 8px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);" />
+</p>
+
+### 6. Kanban Card Integration
+Render concise previews directly inside Kanban cards with full modal preview support:
+
+<p align="center">
+  <img src="static/description/kanban_view.png" alt="Kanban Card Markdown Preview" width="100%" style="border-radius: 8px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);" />
+</p>
 
 ---
 

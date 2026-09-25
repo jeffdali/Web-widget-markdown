@@ -4,10 +4,12 @@
     <t t-name="web_widget_markdown.MarkdownField" owl="1">
         <div class="o_markdown_field_container w-100">
             <MarkdownEditor
-                value="value"
+                value="state.initialValue"
                 readonly="props.readonly"
-                onValueChange.bind="setValue"
+                onChange.bind="handleChange"
+                onBlur.bind="commitChanges"
             />
         </div>
     </t>
 </templates>
+
