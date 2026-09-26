@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="static/description/banner.png" alt="Markdown Field Widget for Odoo" width="100%" />
+  <img src="web_widget_markdown/static/description/banner.png" alt="Markdown Field Widget for Odoo" width="100%" />
 </p>
 
 <p align="center">
@@ -39,42 +39,42 @@ A modern, production-grade Markdown editing and viewing suite built with **OWL 2
 The interactive EasyMDE toolbar features bold, italics, headings, quotes, numbered/bulleted lists, links, images, tables, and code blocks. The toolbar remains pinned at the top on scroll:
 
 <p align="center">
-  <img src="static/description/editor_view.png" alt="Form View Markdown Editor" width="100%" style="border-radius: 8px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);" />
+  <img src="web_widget_markdown/static/description/editor_view.png" alt="Form View Markdown Editor" width="100%" style="border-radius: 8px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);" />
 </p>
 
 ### 2. High-Contrast Rendered Typography & Tables
 Rich typography, clean markdown tables, and syntax-highlighted dark code blocks:
 
 <p align="center">
-  <img src="static/description/preview_mode.png" alt="Rendered Markdown Preview Mode" width="100%" style="border-radius: 8px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);" />
+  <img src="web_widget_markdown/static/description/preview_mode.png" alt="Rendered Markdown Preview Mode" width="100%" style="border-radius: 8px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);" />
 </p>
 
 ### 3. Real-Time Side-by-Side Split Screen Mode
 Simultaneous live editing on the left and instantaneous rendered preview on the right (toggle with the toolbar button or `F9`):
 
 <p align="center">
-  <img src="static/description/split_screen.png" alt="Side-by-Side Live Preview" width="100%" style="border-radius: 8px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);" />
+  <img src="web_widget_markdown/static/description/split_screen.png" alt="Side-by-Side Live Preview" width="100%" style="border-radius: 8px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);" />
 </p>
 
 ### 4. List View Snippet & Preview Trigger
 In list/tree views, `widget="markdown_preview"` renders a clean, single-line truncated preview alongside a dedicated **Preview** button:
 
 <p align="center">
-  <img src="static/description/list_view.png" alt="List View Preview Snippet" width="100%" style="border-radius: 8px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);" />
+  <img src="web_widget_markdown/static/description/list_view.png" alt="List View Preview Snippet" width="100%" style="border-radius: 8px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);" />
 </p>
 
 ### 5. Interactive Modal Dialog Popup
 Clicking the **Preview** button in List or Kanban view opens the full formatted document in a responsive modal dialog without leaving the current view:
 
 <p align="center">
-  <img src="static/description/modal_preview.png" alt="Interactive Modal Dialog Preview" width="100%" style="border-radius: 8px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);" />
+  <img src="web_widget_markdown/static/description/modal_preview.png" alt="Interactive Modal Dialog Preview" width="100%" style="border-radius: 8px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);" />
 </p>
 
 ### 6. Kanban Card Integration
 Render concise previews directly inside Kanban cards with full modal preview support:
 
 <p align="center">
-  <img src="static/description/kanban_view.png" alt="Kanban Card Markdown Preview" width="100%" style="border-radius: 8px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);" />
+  <img src="web_widget_markdown/static/description/kanban_view.png" alt="Kanban Card Markdown Preview" width="100%" style="border-radius: 8px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);" />
 </p>
 
 ---
